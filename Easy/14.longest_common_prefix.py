@@ -5,25 +5,30 @@ If there is no common prefix, return an empty string "".
 
 class Solution:
     def longestCommonPrefix(strs: list[str]) -> str:
+
+        n = False
         s = ''
-        for i in strs[0]:
-            n = 0
-            s += i 
-            for x in strs:
-                if s in x:
-                    n += 1
-                    #print(s, x, n)
-            print(n)
-            if n != len(strs):
-                return s[:-1]
-            elif n == 1 :
-                return '0'
+        for i in range(len(strs[0])+1):
+            for n in strs:
+                if strs[0][0:i] == n[0:i]:
+                    n = True
+                else:
+                    n = False 
+                    break
+            if n: s = strs[0][0:i]
+            else: return s
+        return s
 
-
-
-
-
-x = ["flower","flow","light"]
+a = ["flower","flower","flower","flower"]
+b = ['']
+c = ['a']
+d = ["flower","fower","flower","flower"]
+e = ["flower","f","ower","flower"]
+f = ["c","acc","ccc"]
 
 s = Solution
-print(s.longestCommonPrefix(x))
+print(s.longestCommonPrefix(f))
+'''
+Runtime: 32 ms, faster than 79.71% of Python3 online submissions for Longest Common Prefix.
+Memory Usage: 14.2 MB, less than 82.15% of Python3 online submissions for Longest Common Prefix.
+'''
