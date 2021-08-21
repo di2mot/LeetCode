@@ -14,33 +14,19 @@ class Solution:
             '(': ')',
             '{': '}',
             '[': ']',
-            ')': False,
-            '}': False,
-            ']': False,
-        }
-        x = False
-        if len(s) % 2 != 0:
-            return False
-
-        for n in range(int(len(s) / 2)):
-            if a[s[n]] == s[-(1 + n)]:
-                x = True
+            }
+        stuck = []
+        for i in s:
+            if i in a:
+                stuck.append(a[i])
             else:
-                x = False
-                break
-        if x:
-            return x
+                if not stuck: return False
+                if i == stuck[-1]:
+                    stuck.pop()
+                else: return False
+        if stuck: return False
+        else: return True
 
-        for n in range(0, len(s), 2):
-            # print(s[n], s[n + 1])
-            if a[s[n]] == s[n + 1]:
-                x = True
-            else:
-                x = False
-                break
-        if x:
-            return True
-        return False
 
 
 a = [
@@ -54,10 +40,15 @@ a = [
     '[',
     ']]',
     '[[',
-    "({{{{}}}))",
+    "({{{{}}}})",
     "(([]){})"
     ]
 
 s = Solution
 for n in a:
     print('Task: ', n,  'Resolt: ',s.isValid(n))
+
+'''
+Runtime: 24 ms, faster than 95.45% of Python3 online submissions for Valid Parentheses.
+Memory Usage: 14.2 MB, less than 64.79% of Python3 online submissions for Valid Parentheses.
+'''
