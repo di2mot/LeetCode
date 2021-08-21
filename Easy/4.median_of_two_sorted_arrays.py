@@ -30,8 +30,6 @@ class Solution:
         else:
             return float(n3[len(n3) // 2])
 
-
-
         print(n4)
         su = sum(n3)
         res = su / len(n3)
