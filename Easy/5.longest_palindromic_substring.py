@@ -26,6 +26,8 @@ class Solution:
             if s[0] != s[-1]:
                 return s[0]
             else: return s
+        elif len(s) == s.count(s[0]):
+            return s
 
         start = 0
         stop = 0
@@ -41,38 +43,49 @@ class Solution:
         for x in range(len(s)):
             for y in range(len(s)-1, x, -1):
                 if s[x] == s[y]:
-                    print(x, y)
-                    print(s[x:y+1], len(s[x:y+1]))
-                    if len(s[x:y+1])%2 == 0:
-                        left = s[x:(len(s[x:y+1])//2)]
-                        right = s[(len(s[x:y+1])//2): y+1]
+
+                    # print(x, y)
+                    # print(s[x:y+1], len(s[x:y+1]), len(s[x:y+1])//2)
+                    temp = s[x:y+1]
+
+                    if len(temp) == 3:
+                        left = temp[0: 1]
+                        right = temp[1: -1]
+                        # print('2',temp, left,right, x, y, right[::-1])
+
+                    if len(temp) == 2:
+                        left = temp[0]
+                        right = temp[1]
+                        # print('2',temp, left,right, x, y, right[::-1])
+
+                    elif len(temp)%2 == 0 and len(temp) > 2:
+                        left = temp[0:(len(temp)//2)]
+                        right = temp[(len(temp)//2): len(temp)]
                         print('0',left, right[::-1])
 
                     else:
-                        left = s[x:(len(s[x:y+1])//2)]
-                        right = s[(len(s[x:y+1])//2+1): y+1]
-                        print('1', left, right[::-1])
+                        left = temp[0:(len(temp)//2)+1]
+                        right = temp[(len(temp)//2): len(temp)]
+                        print('1', temp,x,y, left, right[::-1])
 
                     if left == right[::-1]:
 
                         if len(s[x:y+1]) > max_len:
-                            max_len = len(s[x:y+1])
+                            max_len = len(temp)
                             start = x
                             stop = y + 1
-                    # else: break
-
-                    # print(f'x={x}, s[x]={s[x]}, y={y}, s[y]={s[y]} {s[x:y+1]}')
-                    # if recurs_checker(s[x:y+1]):
-                    #     if len(n) < len(s[x:y+1]):
-                    #         n = s[x:y+1]
-                        # break
-        
-            # else: continue
-        return s[start:stop]
+        if len(s[start:stop]):
+            return s[start:stop]
+        else: return s[0]
 
 
 a = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabcaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-e = 'cbbd'
+e = "abcda"
 s = Solution()
 b = s.longestPalindrome(e)
 print(b)
+
+'''
+Runtime: 9058 ms, faster than 5.03% of Python3 online submissions for Longest Palindromic Substring.
+Memory Usage: 14.4 MB, less than 38.37% of Python3 online submissions for Longest Palindromic Substring.
+'''
