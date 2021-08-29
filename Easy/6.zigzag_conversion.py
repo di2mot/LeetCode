@@ -27,10 +27,25 @@ P     I
 
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
-        pass
+        up = ''
+        dwn = ''
+        ent = ''
+        for i in range(0, len(s), 4):
+            up += s[i]
+        for i in range(2, len(s), 4):
+            dwn +=s[i]
+        for i in range(0, len(s)):
+            if s[i] not in up and s[i] not in dwn:
+                ent += s[i]
+
+        print(up +ent + dwn)
+        
+
 
 
 e = "PAYPALISHIRING"
+a = 'ABCDEFGHIJKLMNOPQR'
+numRows = 3
 s = Solution()
-b = s.convert(e)
+b = s.convert(a, numRows)
 print(b)
