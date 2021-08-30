@@ -30,10 +30,11 @@ class Solution:
         up = ''
         dwn = ''
         ent = ''
-        for i in range(0, len(s), 4):
+        for i in range(0, len(s), numRows+(numRows-2)):
             up += s[i]
-        for i in range(2, len(s), 4):
+        for i in range(numRows-1, len(s), numRows+(numRows-2)):
             dwn +=s[i]
+
         for i in range(0, len(s)):
             if s[i] not in up and s[i] not in dwn:
                 ent += s[i]
