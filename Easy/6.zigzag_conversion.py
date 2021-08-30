@@ -29,17 +29,18 @@ class Solution:
     def convert(self, s: str, numRows: int) -> str:
         up = ''
         dwn = ''
-        ent = ''
+        midl = ''
         for i in range(0, len(s), numRows+(numRows-2)):
             up += s[i]
         for i in range(numRows-1, len(s), numRows+(numRows-2)):
             dwn +=s[i]
 
-        for i in range(0, len(s)):
-            if s[i] not in up and s[i] not in dwn:
-                ent += s[i]
+        for i in range(numRows-1):
+            for i in range(0, len(s)):
+                if s[i] not in up and s[i] not in dwn:
+                    midl += s[i]
 
-        print(up +ent + dwn)
+        print(up +midl + dwn)
         
 
 
