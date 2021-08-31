@@ -86,6 +86,6 @@ b = s.longestPalindrome(e)
 print(b)
 
 '''
-Runtime: 9058 ms, faster than 5.03% of Python3 online submissions for Longest Palindromic Substring.
-Memory Usage: 14.4 MB, less than 38.37% of Python3 online submissions for Longest Palindromic Substring.
+Runtime: 7629 ms, faster than 14.26% of Python3 online submissions for Longest Palindromic Substring.
+Memory Usage: 14.3 MB, less than 82.93% of Python3 online submissions for Longest Palindromic Substring.
 '''
