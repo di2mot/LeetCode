@@ -27,27 +27,31 @@ P     I
 
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
-        up = ''
-        dwn = ''
-        midl = ''
-        for i in range(0, len(s), numRows+(numRows-2)):
-            up += s[i]
-        for i in range(numRows-1, len(s), numRows+(numRows-2)):
-            dwn +=s[i]
+        if numRows == 1: return s
 
-        for i in range(numRows-1):
-            for i in range(0, len(s)):
-                if s[i] not in up and s[i] not in dwn:
-                    midl += s[i]
+        res = ''
 
-        print(up +midl + dwn)
+        for line in range(numRows):
+            inc = numRows+(numRows-2)
+            for i in range(line, len(s), inc):
+                res += s[i]
+                if (line > 0 and line < numRows - 1 and
+                i + inc - 2 * line < len(s)):
+                    res += s[i + inc - line * 2]
+
+        return res
         
 
 
 
 e = "PAYPALISHIRING"
 a = 'ABCDEFGHIJKLMNOPQR'
-numRows = 3
+numRows = 4
 s = Solution()
-b = s.convert(a, numRows)
+b = s.convert(e, numRows)
 print(b)
+
+'''
+Runtime: 80 ms, faster than 27.04% of Python3 online submissions for ZigZag Conversion.
+Memory Usage: 14.3 MB, less than 70.79% of Python3 online submissions for ZigZag Conversion
+'''
