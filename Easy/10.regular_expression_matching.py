@@ -32,3 +32,12 @@ Example 5:
 Input: s = "mississippi", p = "mis*is*p*."
 Output: false
 '''
+
+class Solution:
+    def isMatch(self, s: str, p: str) -> bool:
+        pass
+
+st = 'aa'
+p = 'a'
+s = Solution()
+print(s.isMatch(st, p))
