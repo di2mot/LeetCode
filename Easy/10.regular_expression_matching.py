@@ -35,7 +35,14 @@ Output: false
 
 class Solution:
     def isMatch(self, s: str, p: str) -> bool:
-        pass
+        res = True
+        temp = ''
+        for i in range(len(s)):
+
+            if p[i] == '*' and temp == s[i]:
+                res = True
+                
+
 
 st = 'aa'
 p = 'a'
