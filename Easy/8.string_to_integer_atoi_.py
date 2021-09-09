@@ -34,6 +34,6 @@ b = s.myAtoi(e)
 print(b)
 
 '''
-Runtime: 62 ms, faster than 5.11% of Python3 online submissions for String to Integer (atoi).
-Memory Usage: 14.2 MB, less than 83.06% of Python3 online submissions for String to Integer (atoi).
+Runtime: 46 ms, faster than 11.87% of Python3 online submissions for String to Integer (atoi).
+Memory Usage: 14.1 MB, less than 94.52% of Python3 online submissions for String to Integer (atoi).
 '''
