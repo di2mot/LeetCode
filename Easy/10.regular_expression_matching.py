@@ -41,6 +41,8 @@ class Solution:
 
             if p[i] == '*' and temp == s[i]:
                 res = True
+            else:
+                res = False
                 
 
 
